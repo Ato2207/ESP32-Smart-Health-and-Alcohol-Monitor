@@ -5,7 +5,7 @@
 
 #include <MAX30105.h>
 #include "filters.h"
-#include "common.hpp"
+#include "common.h"
 
 extern MAX30105 pulseOxSensor;
 

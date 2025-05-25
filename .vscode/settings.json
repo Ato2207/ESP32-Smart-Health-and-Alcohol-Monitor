@@ -2,6 +2,7 @@
     "files.associations": {
         "algorithm": "cpp",
         "istream": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "adafruit_gfx.h": "c"
     }
 }

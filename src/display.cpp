@@ -22,7 +22,7 @@ void init_display() {
   tft.println("Starting...");
 }
 
-void change_display(double mgL, PulseOxData data) {
+void change_display(double gL, PulseOxData data) {
   static double lastMgL = -1; // Store last value to avoid unnecessary redraws
 
   if (state == GAS) {
@@ -41,14 +41,14 @@ void change_display(double mgL, PulseOxData data) {
     }
 
     // Only update value if it changed
-    if (mgL != lastMgL) {
+    if (gL != lastMgL) {
       // Overwrite old value area
       tft.fillRect(10, 70, 120, 20, ST77XX_BLACK); // Adjust size as needed
       tft.setCursor(10, 70);
       tft.setTextColor(ST77XX_WHITE);
-      tft.print(mgL, 2);
-      tft.print(" mg/L");
-      lastMgL = mgL;
+      tft.print(gL, 2);
+      tft.print(" g/L");
+      lastMgL = gL;
     }
   }
 

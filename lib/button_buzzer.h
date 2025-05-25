@@ -4,7 +4,10 @@
 #define BUTTON_BUZZER_H
 
 #include <Arduino.h>
-#include "../lib/common.hpp"
+#include <driver/gpio.h>
+#include <driver/ledc.h>
+
+#include "../lib/common.h"
 
 #define NOTE_B0 31
 #define NOTE_C1 33
@@ -96,10 +99,12 @@
 #define NOTE_D8 4699
 #define NOTE_DS8 4978
 
-extern int buzzerChannel;
-extern bool buttonPressed;
+extern ledc_channel_t buzzerChannel;
+extern volatile bool buttonPressed;
 
-void IRAM_ATTR isr_button();
+void IRAM_ATTR isr_button(void* arg);
 void init_gpio();
+//void my_hw_timer_init();
+//uint64_t my_millis();
 
 #endif

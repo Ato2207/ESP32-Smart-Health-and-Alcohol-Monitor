@@ -6,7 +6,7 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_ST7735.h>
 #include <Adafruit_I2CDevice.h>
-#include "../lib/common.hpp"
+#include "../lib/common.h"
 
 // Display TFT 128x128
 #define TFT_MOSI 23

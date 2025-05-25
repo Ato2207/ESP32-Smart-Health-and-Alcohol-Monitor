@@ -1,4 +1,4 @@
-#include "../lib/pulse_oxymeter.h"
+#include "../lib/pulse_oxymeter.hpp"
 
 MAX30105 pulseOxSensor;
 
@@ -18,8 +18,8 @@ const float kHighPassCutoff = 0.5;
 
 // Averaging
 const bool kEnableAveraging = true;
-const int kAveragingSamples = 10;
-const int kSampleThreshold = 10;
+const int kAveragingSamples = 6;
+const int kSampleThreshold = 6;
 
 LowPassFilter low_pass_filter_red(kLowPassCutoff, kSamplingFrequency);
 LowPassFilter low_pass_filter_ir(kLowPassCutoff, kSamplingFrequency);
@@ -52,13 +52,14 @@ bool crossed = false;
 long crossed_time = 0;
 
 void init_pulsOxSensor() {
-  if(pulseOxSensor.begin() && pulseOxSensor.setSamplingRate(kSamplingRate)) { 
-    Serial.println("MAX30102 initialized");
-  }
-  else {
-    Serial.println("MAX30102 not found");  
-    while(1);
-  }
+    Wire.begin();
+
+    if(pulseOxSensor.begin() && pulseOxSensor.setSamplingRate(kSamplingRate)) { 
+        Serial.println("MAX30102 initialized");
+    } else {
+        Serial.println("MAX30102 not found");  
+        while(1);
+    }
 }
 
 PulseOxData measure_pulseOx() {
